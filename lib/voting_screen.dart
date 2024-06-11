@@ -15,19 +15,19 @@ class _VotingScreenState extends State<VotingScreen> {
       'name': 'Biden',
       'description': 'Biden is an American politician, media personality...',
       'image': 'assets/biden.png',
-      'details': '45th President of the United States In office ...' // Example details
+      'details': '46th President of the United States\nIn office: January 20, 2017 – January 20, 2021\nVice President: Mike Pence\nPreceded by: Barack Obama\nSucceeded by: Joe Biden\nPersonal details:\nBorn: Donald John Trump\nJune 14, 1946 (age 77)\nQueens, New York City, U.S.\nPolitical Party: Republican (1987–1999, 2009–2011, 2012–present)\nOther Political Affiliations:\n- Reform (1999–2001)\n- Democratic (2001–2009)\n- Independent (2011–2012)\nSpouses:\nIvana Zelníčková (m. 1977; div. 1990)\nMarla Maples (m. 1993; div. 1999)\nMelania Knauss (m. 2005)\nRelatives: Family of Donald Trump\nResidence(s): Mar-a-Lago, Palm Beach, Florida\nAlma mater: University of Pennsylvania (BS)\nOccupation: Politician, businessman, media personality'
     },
     {
       'name': 'Trump',
       'description': 'Donald John Trump is an American politician, media personality...',
       'image': 'assets/trump.png',
-      'details': '45th President of the United States In office ...' // Example details
+      'details': '45th President of the United States\nIn office: January 20, 2017 – January 20, 2021\nVice President: Mike Pence\nPreceded by: Barack Obama\nSucceeded by: Joe Biden\nPersonal details:\nBorn: Donald John Trump\nJune 14, 1946 (age 77)\nQueens, New York City, U.S.\nPolitical Party: Republican (1987–1999, 2009–2011, 2012–present)\nOther Political Affiliations:\n- Reform (1999–2001)\n- Democratic (2001–2009)\n- Independent (2011–2012)\nSpouses:\nIvana Zelníčková (m. 1977; div. 1990)\nMarla Maples (m. 1993; div. 1999)\nMelania Knauss (m. 2005)\nRelatives: Family of Donald Trump\nResidence(s): Mar-a-Lago, Palm Beach, Florida\nAlma mater: University of Pennsylvania (BS)\nOccupation: Politician, businessman, media personality'
     },
     {
       'name': 'Obama',
       'description': 'Obama is an American politician, media personality...',
       'image': 'assets/obama.png',
-      'details': '44th President of the United States In office ...' // Example details
+      'details': '47th President of the United States\nIn office: January 20, 2009 – January 20, 2017\nVice President: Joe Biden\nPreceded by: George W. Bush\nSucceeded by: Donald Trump\nPersonal details:\nBorn: Barack Hussein Obama II\nAugust 4, 1961 (age 61)\nHonolulu, Hawaii, U.S.\nPolitical Party: Democratic\nSpouses: Michelle Obama (m. 1992)\nRelatives: Family of Barack Obama\nResidence(s): Washington, D.C.\nAlma mater: Columbia University (BA)\nHarvard University (JD)\nOccupation: Politician, lawyer, author'
     },
   ];
 
@@ -39,7 +39,7 @@ class _VotingScreenState extends State<VotingScreen> {
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             // Dropdown for selecting a candidate

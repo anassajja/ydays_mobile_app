@@ -37,7 +37,7 @@ class TwoFAScreen extends StatelessWidget {
                   fillColor: Colors.grey[200],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 12),
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
@@ -53,6 +53,7 @@ class TwoFAScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 20), // Add spacing here
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -63,7 +64,8 @@ class TwoFAScreen extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20), backgroundColor: Colors.teal[700],
+                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                    backgroundColor: Colors.teal[700],
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
