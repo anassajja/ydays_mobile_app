@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'main.dart';
 
 class MoreInfoScreen extends StatelessWidget {
@@ -8,7 +7,7 @@ class MoreInfoScreen extends StatelessWidget {
   final String candidateImage;
   final String candidateDetails;
 
-  MoreInfoScreen({
+  const MoreInfoScreen({super.key,
     required this.candidateName,
     required this.candidateImage,
     required this.candidateDetails,
@@ -30,7 +29,7 @@ class MoreInfoScreen extends StatelessWidget {
                 // Navigate to the home page when the logo is clicked
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
               child: Center(
@@ -40,7 +39,7 @@ class MoreInfoScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: Image.asset(
                 candidateImage,
@@ -49,24 +48,24 @@ class MoreInfoScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: Text(
                 candidateName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Card(
               color: Colors.lightBlue[50],
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
+              child: const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

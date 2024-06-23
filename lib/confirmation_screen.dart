@@ -5,7 +5,7 @@ import 'main.dart'; // Import the home page
 class ConfirmationScreen extends StatelessWidget {
   final String candidate;
 
-  ConfirmationScreen({required this.candidate});
+  const ConfirmationScreen({super.key, required this.candidate});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ConfirmationScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Confirm Your Vote'),
+        title: const Text('Confirm Your Vote'),
       ),
       body: Center(
         child: Padding(
@@ -31,16 +31,16 @@ class ConfirmationScreen extends StatelessWidget {
                   // Navigate to the home page when the logo is clicked
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 },
                 child: SvgPicture.asset(
                   'assets/logo.svg', // Ensure the path to the logo is correct
-                  height: 80.0,
+                  height: 120.0,
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Vote for',
                 style: TextStyle(
                   fontSize: 24,
@@ -48,47 +48,47 @@ class ConfirmationScreen extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Image.asset(
                 candidateImages[candidate]!,
                 height: 100.0,
                 width: 100.0,
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 candidate,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  labelStyle: TextStyle(color: Colors.blue),
+                  labelStyle: const TextStyle(color: Colors.blue),
                   hintText: 'Enter your password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.grey[200],
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 20), // Added space between the password field and button
+              const SizedBox(height: 20), // Added space between the password field and button
               ElevatedButton(
                 onPressed: () {
                   // Handle vote confirmation
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20), backgroundColor: Colors.teal[700],
+                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20), backgroundColor: Colors.teal[700],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Confirm',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
             ],

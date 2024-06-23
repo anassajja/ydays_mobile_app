@@ -3,6 +3,8 @@ import 'confirmation_screen.dart'; // Import the confirmation screen
 import 'more_info_screen.dart'; // Import the more info screen
 
 class VotingScreen extends StatefulWidget {
+  const VotingScreen({super.key});
+
   @override
   _VotingScreenState createState() => _VotingScreenState();
 }
@@ -35,7 +37,7 @@ class _VotingScreenState extends State<VotingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vote for Your Candidate'),
+        title: const Text('Vote for Your Candidate'),
         backgroundColor: Colors.deepPurple,
       ),
       body: Padding(
@@ -57,12 +59,12 @@ class _VotingScreenState extends State<VotingScreen> {
                 );
               }).toList(),
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 filled: true,
                 fillColor: Colors.grey[200],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // List of candidates
             Expanded(
               child: ListView.builder(
@@ -82,25 +84,25 @@ class _VotingScreenState extends State<VotingScreen> {
                             width: 100.0,
                             fit: BoxFit.cover,
                           ),
-                          SizedBox(width: 16),
+                          const SizedBox(width: 16),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   candidate['name']!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   candidate['description']!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: [
                                     ElevatedButton(
@@ -112,9 +114,9 @@ class _VotingScreenState extends State<VotingScreen> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.green,
                                       ),
-                                      child: Text('Vote'),
+                                      child: const Text('Vote'),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     ElevatedButton(
                                       onPressed: () {
                                         // Navigate to more info screen
@@ -132,7 +134,7 @@ class _VotingScreenState extends State<VotingScreen> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blueGrey,
                                       ),
-                                      child: Text('More info'),
+                                      child: const Text('More info'),
                                     ),
                                   ],
                                 )
@@ -154,7 +156,7 @@ class _VotingScreenState extends State<VotingScreen> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Continue button
             ElevatedButton(
               onPressed: () {
@@ -167,14 +169,14 @@ class _VotingScreenState extends State<VotingScreen> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20), backgroundColor: Colors.teal[700],
+                padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20), backgroundColor: Colors.teal[700],
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Continue',
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ],

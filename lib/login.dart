@@ -4,6 +4,8 @@ import 'main.dart'; // Import the main.dart file to use HomePage
 import 'two_fa_screen.dart'; // Import the TwoFAScreen
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,26 +21,26 @@ class LoginScreen extends StatelessWidget {
                   // Navigate to the home page when the logo is clicked
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 },
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/logo.svg',
-                    height: 80.0,
+                    height: 120.0,
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Login',
                 style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Username',
                 style: TextStyle(
                   fontSize: 18,
@@ -47,13 +49,13 @@ class LoginScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter the username',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.grey[200],
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Password',
                 style: TextStyle(
                   fontSize: 18,
@@ -62,20 +64,20 @@ class LoginScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter your password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.grey[200],
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
                     // Handle link tap
                   },
-                  child: Text(
+                  child: const Text(
                     'forget password ?',
                     style: TextStyle(
                       color: Colors.blue,
@@ -84,26 +86,26 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigate to the 2FA screen when the button is pressed
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => TwoFAScreen()),
+                      MaterialPageRoute(builder: (context) => const TwoFAScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                     backgroundColor: Colors.teal[700],
                   ),
-                  child: Text(
+                  child: const Text(
                     'Continue',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

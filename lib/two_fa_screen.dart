@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'voting_screen.dart'; // Import the voting screen
+import 'package:flutter_svg/flutter_svg.dart';
+import 'main.dart';
+import 'election_categories_screen.dart';
 
 class TwoFAScreen extends StatelessWidget {
+  const TwoFAScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('2FA Verification'),
+        title: const Text('2FA Verification'),
       ),
       body: Center(
         child: Padding(
@@ -15,15 +19,30 @@ class TwoFAScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+                child: Center(
+                  child: SvgPicture.asset(
+                    'assets/logo.svg',
+                    height: 120.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
                 'Enter 2FA Code',
                 style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 '2FA Code',
                 style: TextStyle(
                   fontSize: 18,
@@ -32,19 +51,19 @@ class TwoFAScreen extends StatelessWidget {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter the 2FA code',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.grey[200],
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () {
                     // Handle link tap
                   },
-                  child: Text(
+                  child: const Text(
                     'didn’t receive the code ?',
                     style: TextStyle(
                       color: Colors.blue,
@@ -53,26 +72,25 @@ class TwoFAScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20), // Add spacing here
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigate to the voting screen when the button is pressed
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => VotingScreen()),
+                      MaterialPageRoute(builder: (context) => const ElectionCategoriesScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                     backgroundColor: Colors.teal[700],
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Verify',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

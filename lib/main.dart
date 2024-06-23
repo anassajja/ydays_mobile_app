@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('E-Vote Home Page'),
+        title: const Text('E-Vote Home Page'),
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
@@ -38,24 +38,24 @@ class HomePage extends StatelessWidget {
           children: [
             SvgPicture.asset(
               'assets/logo.svg', // Ensure this path is correct
-              height: 100.0,
+              height: 120.0,
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Welcome to the E-Vote Application',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Navigate to the login screen
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
-              child: Text('Go to Login'),
+              child: const Text('Go to Login'),
             ),
           ],
         ),

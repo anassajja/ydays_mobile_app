@@ -59,6 +59,9 @@ flutter:
     - assets/biden.png
     - assets/trump.png
     - assets/obama.png
+    - assets/election1.png
+    - assets/election2.png
+    - assets/election3.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
