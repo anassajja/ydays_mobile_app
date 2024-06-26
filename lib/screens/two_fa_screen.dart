@@ -1,10 +1,40 @@
+// lib/screens/two_fa_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'main.dart';
 import 'election_categories_screen.dart';
+import '../services/two_fa_service.dart';
 
-class TwoFAScreen extends StatelessWidget {
-  const TwoFAScreen({super.key});
+class TwoFAScreen extends StatefulWidget {
+  final String userId;
+
+  const TwoFAScreen({super.key, required this.userId});
+
+  @override
+  _TwoFAScreenState createState() => _TwoFAScreenState();
+}
+
+class _TwoFAScreenState extends State<TwoFAScreen> {
+  final TwoFAService _twoFAService = TwoFAService(baseUrl: 'http://localhost:5001');
+  final TextEditingController _codeController = TextEditingController();
+  String _errorMessage = '';
+
+  Future<void> _verifyCode() async {
+    try {
+      final isValid = await _twoFAService.verifyCode(widget.userId, _codeController.text);
+      if (isValid) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ElectionCategoriesScreen()),
+        );
+      }
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +58,8 @@ class TwoFAScreen extends StatelessWidget {
                 },
                 child: Center(
                   child: SvgPicture.asset(
-                    'assets/logo.svg',
-                    height: 120.0,
+                    'assets/evote.svg',
+                    height: 100.0,
                   ),
                 ),
               ),
@@ -37,7 +67,7 @@ class TwoFAScreen extends StatelessWidget {
               const Text(
                 'Enter 2FA Code',
                 style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -49,6 +79,7 @@ class TwoFAScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: _codeController,
                 decoration: InputDecoration(
                   hintText: 'Enter the 2FA code',
                   border: const OutlineInputBorder(),
@@ -75,12 +106,7 @@ class TwoFAScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ElectionCategoriesScreen()),
-                    );
-                  },
+                  onPressed: _verifyCode,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                     backgroundColor: Colors.teal[700],
@@ -94,6 +120,14 @@ class TwoFAScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              if (_errorMessage.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    _errorMessage,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                ),
             ],
           ),
         ),

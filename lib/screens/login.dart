@@ -1,10 +1,46 @@
+// lib/screens/login.dart
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../services/auth_service.dart'; // Import the AuthService
 import 'main.dart'; // Import the main.dart file to use HomePage
 import 'two_fa_screen.dart'; // Import the TwoFAScreen
 
-class LoginScreen extends StatelessWidget {
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService(baseUrl: 'http://localhost:5001');
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  String _errorMessage = '';
+
+  Future<void> _login() async {
+    try {
+      final result = await _authService.login(
+        _usernameController.text,
+        _passwordController.text,
+      );
+      // Handle successful login
+      if (kDebugMode) {
+        print('Login successful: $result');
+      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TwoFAScreen(userId: result['userId'])),
+      );
+    } catch (e) {
+      setState(() {
+        _errorMessage = e.toString();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +62,8 @@ class LoginScreen extends StatelessWidget {
                 },
                 child: Center(
                   child: SvgPicture.asset(
-                    'assets/logo.svg',
-                    height: 120.0,
+                    'assets/evote.svg',
+                    height: 100.0,
                   ),
                 ),
               ),
@@ -35,7 +71,7 @@ class LoginScreen extends StatelessWidget {
               const Text(
                 'Login',
                 style: TextStyle(
-                  fontSize: 36,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -47,6 +83,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: 'Enter the username',
                   border: const OutlineInputBorder(),
@@ -62,6 +99,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   hintText: 'Enter your password',
                   border: const OutlineInputBorder(),
@@ -89,13 +127,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to the 2FA screen when the button is pressed
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const TwoFAScreen()),
-                    );
-                  },
+                  onPressed: _login,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                     shape: RoundedRectangleBorder(
@@ -109,6 +141,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              if (_errorMessage.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    _errorMessage,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                ),
             ],
           ),
         ),

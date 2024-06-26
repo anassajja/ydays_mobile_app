@@ -34,7 +34,7 @@ class MoreInfoScreen extends StatelessWidget {
               },
               child: Center(
                 child: SvgPicture.asset(
-                  'assets/logo.svg', // Ensure the path to the logo is correct
+                  'assets/evote.svg', // Ensure the path to the logo is correct
                   height: 80.0,
                 ),
               ),

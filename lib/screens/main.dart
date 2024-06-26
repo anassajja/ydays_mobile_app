@@ -37,8 +37,8 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              'assets/logo.svg', // Ensure this path is correct
-              height: 120.0,
+              'assets/evote.svg', // Ensure this path is correct
+              height: 100.0,
             ),
             const SizedBox(height: 20),
             const Text(
